@@ -28,24 +28,6 @@ A fast, intuitive POS system built for shops and small businesses. Manage sales,
 
 ---
 
-## Built for Speed
-
-Designed for high-volume retail environments. Instant updates, rapid transactions, and an uninterrupted workflow.
-
----
-
-## Built for Africa
-
-Supports local payment flows, business patterns, and operational processes within the African retail ecosystem.
-
----
-
-## Status
-
-**In Development**
-
----
-
 ## Build Instructions
 
 1. Clone the repository:
@@ -83,26 +65,27 @@ npm run dev
 
 ---
 
-## Roadmap
-
-Multi-store support  
-Barcode scanning  
-Expense tracking  
-Supplier management  
-Offline-first mode  
-Mobile app extension  
-
----
-
 ## License
 
 This project is open-sourced under the MIT License.  
 
 ---
 
+## Built for Speed
 
-## Status: In Development  
+Designed for high-volume retail environments. Instant updates, rapid transactions, and an uninterrupted workflow.
 
+---
+
+## Built for Africa
+
+Supports local payment flows, business patterns, and operational processes within the African retail ecosystem.
+
+---
+
+## Status
+
+**In Development**
 
 ---
 

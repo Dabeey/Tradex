@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Item;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class InventoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'item_id' => Item::factory(),
+            'quantity' => $this->faker->numberBetween(10,100),
         ];
     }
 }

@@ -139,8 +139,7 @@
 
         {{ $slot }}
 
-        @livewire(name: 'notifications')
-
+        @livewire('notifications')
         @filamentScripts        
         @fluxScripts
     </body>

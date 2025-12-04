@@ -1,5 +1,11 @@
 <?php
 
+use App\Livewire\Customer\ListCustomers;
+use App\Livewire\Items\ListInventories;
+use App\Livewire\Items\ListItems;
+use App\Livewire\Management\ListPaymentMethods;
+use App\Livewire\Management\ListUsers;
+use App\Livewire\Sales\ListSales;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -29,4 +35,14 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/manage-users',ListUsers::class)->name('users.index');
+    Route::get('/manage-items',ListItems::class)->name('items.index');
+    Route::get('/manage-inventories',ListInventories::class)->name('inventories.index');
+    Route::get('/manage-sales',ListSales::class)->name('sales.index');
+    Route::get('/manage-customers',ListCustomers::class)->name('customers.index');
+    Route::get('/manage-payment-method',ListPaymentMethods::class)->name('payment-method.index');
+
 });

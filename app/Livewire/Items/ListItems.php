@@ -13,7 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Item;
+use Filament\Tables\Columns\TextColumn;
 use Livewire\Component;
+use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 
 class ListItems extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -26,7 +29,15 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
         return $table
             ->query(fn (): Builder => Item::query())
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('sku')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('price')
+                    ->sortable()
+                    ->money('NGN'),
+                TextColumn::make('status')->badge(),
             ])
             ->filters([
                 //
@@ -35,7 +46,11 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (Item $record) => $record->delete())
+                    ->successNotificationTitle('Deleted Successfully'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

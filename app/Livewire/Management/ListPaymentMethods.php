@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use App\Models\PaymentMethod;
+use Filament\Tables\Columns\TextColumn;
 
 class ListPaymentMethods extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -26,7 +27,12 @@ class ListPaymentMethods extends Component implements HasActions, HasSchemas, Ha
         return $table
             ->query(fn (): Builder => PaymentMethod::query())
             ->columns([
-                //
+                //Add the fields you want to display
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Textcolumn::make('description')
+                    ->limit(50), //limit to how many text to display
             ])
             ->filters([
                 //

@@ -11,8 +11,6 @@
         </style>
 
         @filamentStyles
-
-
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
         <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -27,34 +25,33 @@
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
+                
 
                 <flux:navlist.group :heading="__('Management')" class="grid">
-                    <flux:navlist.item icon="customer" :href="route('customers.index')" :current="request()->routeIs('customers.index')" 
+                    <flux:navlist.item icon="users" :href="route('customers.index')" :current="request()->routeIs('customers.index')" 
                         wire:navigate>{{ __('Manage Customers') }}</flux:navlist.item>
 
-                    <flux:navlist.item icon="customer" :href="route('payment-method.index')" :current="request()->routeIs('payment.index')" 
+                    <flux:navlist.item icon="credit-card" :href="route('payment-method.index')" :current="request()->routeIs('payment.index')" 
                         wire:navigate>{{ __('Manage Payment Method') }}</flux:navlist.item>
-                    </flux:navlist.group>
-
-                <flux:navlist.group :heading="__('Inventory Management')" class="grid">
-                    <flux:navlist.item icon="customer" :href="route('inventories.index')" :current="request()->routeIs('inventories.index')" 
-                        wire:navigate>{{ __('Manage Inventories') }}</flux:navlist.item>
-                            
-                    <flux:navlist.item icon="customer" :href="route('sales.index')" :current="request()->routeIs('sales.index')" 
-                        wire:navigate>{{ __('Manage Sales') }}</flux:navlist.item>
-
-                    <flux:navlist.item icon="customer" :href="route('items.index')" :current="request()->routeIs('items.index')" 
-                        wire:navigate>{{ __('Items') }}</flux:navlist.item>
                 </flux:navlist.group>
 
+                <flux:navlist.group :heading="__('Inventory Management')" class="grid">
+                    <flux:navlist.item icon="cube" :href="route('items.index')" :current="request()->routeIs('items.index')" 
+                        wire:navigate>{{ __('Items') }}</flux:navlist.item>
+                    
+                        <flux:navlist.item icon="archive-box" :href="route('inventories.index')" :current="request()->routeIs('inventories.index')" 
+                        wire:navigate>{{ __('Inventory') }}</flux:navlist.item>
+                                
+                </flux:navlist.group>
+
+                {{-- or shopping-cart icon --}}
                 <flux:navlist.group :heading="__('Sales')" class="grid">
-                    <flux:navlist.item icon="customer" :href="route('sales.index')" :current="request()->routeIs('sales.index')" 
+                    <flux:navlist.item icon="currency-dollar" :href="route('sales.index')" :current="request()->routeIs('sales.index')" 
                         wire:navigate>{{ __('Sales') }}</flux:navlist.item>
-                 </flux:navlist.group>
+                </flux:navlist.group>
+            </flux:navlist>
 
             <flux:spacer />
-
-            
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">

@@ -13,9 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Inventory;
+use Filament\Tables\Columns\TextColumn;
 use Livewire\Component;
 
-class ListInventories extends Component implements HasActions, HasTable
+class ListInventories extends Component implements HasActions, HasSchemas, HasTable
 {
     use InteractsWithActions;
     use InteractsWithTable;
@@ -27,7 +28,14 @@ protected string $tableClass = Inventory::class;
         return $table
             ->query(fn (): Builder => Inventory::query())
             ->columns([
-                //
+                TextColumn::make('item.name')
+                     ->searchable()
+                     ->sortable(),
+                TextColumn::make('quantity')
+                    ->sortable()
+                    ->badge(),
+                TextColumn::make('created_at')
+                    ->toggleable( isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -50,7 +50,7 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
                     ->requiresConfirmation()
                     ->color('danger')
                     ->action(fn (Item $record) => $record->delete())
-                    ->successNotificationTitle('Deleted Successfully'),
+                    ->successNotificationTitle('Item Deleted Successfully'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

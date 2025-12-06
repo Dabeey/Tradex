@@ -16,6 +16,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Filament\Actions\Action;
 
 class ListCustomers extends Component implements HasActions, HasSchemas, HasTable
 {

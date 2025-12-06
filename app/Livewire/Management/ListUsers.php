@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use App\Models\User;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\Action;
 
 class ListUsers extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -43,7 +44,12 @@ class ListUsers extends Component implements HasActions, HasSchemas, HasTable
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (User $record) => $record->delete())
+                    ->successNotificationTitle('User Deleted Successfully'),
+            
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

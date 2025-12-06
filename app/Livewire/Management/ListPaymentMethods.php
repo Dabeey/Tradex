@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use App\Models\PaymentMethod;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\Action;
 
 class ListPaymentMethods extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -41,7 +42,12 @@ class ListPaymentMethods extends Component implements HasActions, HasSchemas, Ha
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (PaymentMethod $record) => $record->delete())
+                    ->successNotificationTitle('Payment Method Deleted Successfully'),
+            
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

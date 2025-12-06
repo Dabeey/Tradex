@@ -14,6 +14,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use App\Models\Sales;
+use Filament\Actions\Action;
+
 
 class ListSales extends Component implements HasActions, HasTable
 {
@@ -35,7 +37,12 @@ class ListSales extends Component implements HasActions, HasTable
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (Sales $record) => $record->delete())
+                    ->successNotificationTitle('Sale Deleted Successfully'),
+            
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

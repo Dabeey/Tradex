@@ -28,6 +28,9 @@
                 
 
                 <flux:navlist.group :heading="__('Management')" class="grid">
+                    <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')" 
+                        wire:navigate>{{ __('Manage Users') }}</flux:navlist.item>
+
                     <flux:navlist.item icon="users" :href="route('customers.index')" :current="request()->routeIs('customers.index')" 
                         wire:navigate>{{ __('Manage Customers') }}</flux:navlist.item>
 

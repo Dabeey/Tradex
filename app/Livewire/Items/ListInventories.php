@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Inventory;
 use Filament\Tables\Columns\TextColumn;
 use Livewire\Component;
+use Filament\Actions\Action;
 
 class ListInventories extends Component implements HasActions, HasSchemas, HasTable
 {
@@ -44,7 +45,12 @@ protected string $tableClass = Inventory::class;
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->badge()
+                    ->action(fn (Inventory $record) => $record->delete())
+                    ->successNotificationTitle('Inventory Deleted Successfully'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

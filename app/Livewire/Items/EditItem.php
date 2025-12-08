@@ -8,8 +8,11 @@ use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-use Item;
+use App\Models\Item;
+use Filament\Forms\Components\TextInput;
 use Livewire\Component;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\ToggleButtons;
 
 class EditItem extends Component implements HasActions, HasSchemas
 {
@@ -22,6 +25,7 @@ class EditItem extends Component implements HasActions, HasSchemas
 
     public function mount(): void
     {
+        // populate the default value from db
         $this->form->fill($this->record->attributesToArray());
     }
 
@@ -29,7 +33,31 @@ class EditItem extends Component implements HasActions, HasSchemas
     {
         return $schema
             ->components([
-                //
+                // Add the section
+                Section::make('Edit the item')
+                    ->description('Update the item details as you wish!')
+                    ->schema([
+
+                        // namespace
+                        TextInput::make('name')
+                            ->label('Item Name'),
+                        TextInput::make('squ')
+                            ->unique(),
+                        TextInput::make('price')
+                            ->numeric(),
+
+
+
+                        ToggleButtons::make('Status')
+                            ->label('Is this item active?')
+                            ->options([
+                                'active' => 'Active',
+                                'inactive' => 'In Active',
+
+                            ])
+                            ->grouped()
+
+                    ])
             ])
             ->statePath('data')
             ->model($this->record);

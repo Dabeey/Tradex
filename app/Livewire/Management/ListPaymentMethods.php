@@ -48,6 +48,11 @@ class ListPaymentMethods extends Component implements HasActions, HasSchemas, Ha
                     ->action(fn (PaymentMethod $record) => $record->delete())
                     ->successNotificationTitle('Payment Method Deleted Successfully'),
             
+            
+                Action::make('edit')
+                // redirect to this url
+                    ->url(fn (PaymentMethod $record): string => route('payment-method.update', $record))
+                
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

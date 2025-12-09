@@ -11,6 +11,12 @@ use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use App\Models\PaymentMethod;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Notifications\Notification;
+
+
 class EditPaymentMethod extends Component implements HasActions, HasSchemas
 {
     use InteractsWithActions;
@@ -29,7 +35,17 @@ class EditPaymentMethod extends Component implements HasActions, HasSchemas
     {
         return $schema
             ->components([
-                //
+                Section::make('Edit Payment Method')
+                    ->description('Update the payment method details as you wish!')
+                    ->columns(2)
+                    ->schema([
+
+                        // namespace
+                        TextInput::make('name')
+                            // ->label('Payment Method Name'),
+                        TextInput::make('description')
+                            ->unique(),
+                    ])
             ])
             ->statePath('data')
             ->model($this->record);
@@ -40,6 +56,12 @@ class EditPaymentMethod extends Component implements HasActions, HasSchemas
         $data = $this->form->getState();
 
         $this->record->update($data);
+
+        Notification::make()
+            ->title('Payment Method Updated!')
+            ->success()
+            ->body("Payment Method {$this->record->name} has been updated successfully")
+            ->send();
     }
 
     public function render(): View

@@ -11,3 +11,7 @@ Update COMMITS.md to include recent enhancements to item editing, featuring impr
 
 <!-- 2  -->
 Refactor customer editing functionality: enhance form layout with new sections and input fields, implement success notification on customer update, and update button styling in the edit customer view. Additionally, add routes for customer editing and improve delete action confirmation in customer management.
+
+<!-- DAY 7 -->
+<!-- 1 -->
+Enhance payment method management: refactor EditPaymentMethod component to include a new form layout with sections and input fields, implement success notification upon update, and add edit route for payment methods. Update ListPaymentMethods to include an edit action.

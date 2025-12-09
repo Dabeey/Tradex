@@ -15,3 +15,6 @@ Refactor customer editing functionality: enhance form layout with new sections a
 <!-- DAY 7 -->
 <!-- 1 -->
 Enhance payment method management: refactor EditPaymentMethod component to include a new form layout with sections and input fields, implement success notification upon update, and add edit route for payment methods. Update ListPaymentMethods to include an edit action.
+
+<!-- 2 -->
+Refactor form components across management views: replace standard button with Filament button for improved styling and consistency, and update payment method description field to use Textarea for better input handling.

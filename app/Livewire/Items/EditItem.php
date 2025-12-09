@@ -13,6 +13,8 @@ use Filament\Forms\Components\TextInput;
 use Livewire\Component;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\ToggleButtons;
+use Filament\Notifications\Notification;
+
 
 class EditItem extends Component implements HasActions, HasSchemas
 {
@@ -36,14 +38,16 @@ class EditItem extends Component implements HasActions, HasSchemas
                 // Add the section
                 Section::make('Edit the item')
                     ->description('Update the item details as you wish!')
+                    ->columns(3)
                     ->schema([
 
                         // namespace
                         TextInput::make('name')
                             ->label('Item Name'),
-                        TextInput::make('squ')
+                        TextInput::make('sKu')
                             ->unique(),
                         TextInput::make('price')
+                            ->prefix('#')
                             ->numeric(),
 
 
@@ -68,6 +72,12 @@ class EditItem extends Component implements HasActions, HasSchemas
         $data = $this->form->getState();
 
         $this->record->update($data);
+        
+        Notification::make()
+            ->title('Item Updated!')
+            ->success()
+            ->body("Item {$this->record->name} has been updated successfully")
+            ->send();
     }
 
     public function render(): View

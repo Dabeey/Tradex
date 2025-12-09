@@ -29,6 +29,7 @@ class ListItems extends Component implements HasActions, HasSchemas, HasTable
         return $table
             ->query(fn (): Builder => Item::query())
             ->columns([
+                // Add column
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('sku')

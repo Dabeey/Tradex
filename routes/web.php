@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Livewire\Items\EditItem;
- 
+use App\Livewire\Customer\EditCustomers;
+use App\Livewire\Items\EditInventory;
+use App\Livewire\Sale\EditSale;
+use App\Livewire\Management\EditPaymentMethod;
+use App\Livewire\Management\EditUser;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/manage-inventories',ListInventories::class)->name('inventories.index');
     Route::get('/manage-sales',ListSales::class)->name('sales.index');
     Route::get('/manage-customers',ListCustomers::class)->name('customers.index');
+    Route::get('/edit-customer/{record}',EditCustomers::class)->name('customer.update');
+    
     Route::get('/manage-payment-method',ListPaymentMethods::class)->name('payment-method.index');
 
 });

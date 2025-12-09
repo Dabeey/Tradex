@@ -9,7 +9,7 @@ use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use User;
+use App\Models\User;
 
 class EditUser extends Component implements HasActions, HasSchemas
 {

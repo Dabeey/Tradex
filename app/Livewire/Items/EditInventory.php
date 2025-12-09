@@ -8,7 +8,7 @@ use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-use Inventory;
+use App\Models\Inventory;
 use Livewire\Component;
 
 class EditInventory extends Component implements HasActions, HasSchemas

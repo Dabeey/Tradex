@@ -46,7 +46,16 @@ class ListCustomers extends Component implements HasActions, HasSchemas, HasTabl
                 //
             ])
             ->recordActions([
-                //
+                Action::make('delete')
+                    ->requiresConfirmation()
+                    ->color('danger')
+                    ->action(fn (Customer $record) => $record->delete())
+                    ->successNotificationTitle('Customer Deleted Successfully'),
+
+                Action::make('edit')
+                // redirect to this url
+                    ->url(fn (Customer $record): string => route('customer.update', $record))
+                
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

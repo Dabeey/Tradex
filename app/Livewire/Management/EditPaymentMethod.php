@@ -9,7 +9,7 @@ use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use PaymentMethod;
+use App\Models\PaymentMethod;
 
 class EditPaymentMethod extends Component implements HasActions, HasSchemas
 {

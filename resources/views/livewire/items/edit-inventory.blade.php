@@ -2,9 +2,9 @@
     <form wire:submit="save">
         {{ $this->form }}
 
-        <button type="submit">
+        <x-filament::button type="submit" class="mt-3" icon="heroicon-m-sparkles">
             Submit
-        </button>
+        </x-filament::button>
     </form>
 
     <x-filament-actions::modals />

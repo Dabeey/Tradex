@@ -12,7 +12,6 @@ use Livewire\Component;
 use App\Models\PaymentMethod;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Textarea;
 use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Notifications\Notification;
@@ -42,10 +41,11 @@ class EditPaymentMethod extends Component implements HasActions, HasSchemas
                     ->schema([
 
                         // namespace
-                        TextInput::make('name')
+                        TextInput::make('name'),
                             // ->label('Payment Method Name'),
                         Textarea::make('description')
                             ->unique(),
+                            
                     ])
             ])
             ->statePath('data')

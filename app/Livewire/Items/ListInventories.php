@@ -51,7 +51,10 @@ protected string $tableClass = Inventory::class;
                     ->badge()
                     ->action(fn (Inventory $record) => $record->delete())
                     ->successNotificationTitle('Inventory Deleted Successfully'),
-            ])
+            
+                Action::make('edit')
+                    ->url(fn (Inventory $record):string => route('inventories.update', $record)),
+                    ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     //

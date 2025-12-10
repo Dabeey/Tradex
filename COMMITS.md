@@ -18,3 +18,7 @@ Enhance payment method management: refactor EditPaymentMethod component to inclu
 
 <!-- 2 -->
 Refactor form components across management views: replace standard button with Filament button for improved styling and consistency, and update payment method description field to use Textarea for better input handling.
+
+Refactor Sales components: update EditSale to include proper namespace, enhance form layout with new input fields for customer details, and implement success notification upon customer update. Add edit action in ListSales for improved functionality.
+
+Refactor management and sales components: enhance EditUser and EditSale forms with new sections and input fields, implement success notifications upon updates, and add edit actions in ListUsers and ListSales for improved functionality. Update routes for sales editing to reflect namespace changes.

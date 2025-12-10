@@ -10,6 +10,12 @@ use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 use App\Models\User;
+use Filament\Forms\Components\TextInput;
+
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Notifications\Notification;
+
 
 class EditUser extends Component implements HasActions, HasSchemas
 {
@@ -29,7 +35,14 @@ class EditUser extends Component implements HasActions, HasSchemas
     {
         return $schema
             ->components([
-                //
+                Section::make('Edit User')
+                    ->columns(2)
+                    ->description('Update the user as you wish!')
+                    ->schema([
+                        TextInput::make('name'),
+                        TextInput::make('role')
+                    ])
+                
             ])
             ->statePath('data')
             ->model($this->record);

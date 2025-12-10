@@ -28,7 +28,15 @@ class ListSales extends Component implements HasActions, HasTable
         return $table
             ->query(fn (): Builder => Sales::query())
             ->columns([
-                //
+                TextColumn::make('item.name')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('quantity')
+                    ->sortable()
+                    ->badge(),
+                TextColumn::make('created_at')
+                    ->toggleable( isToggledHiddenByDefault: true),
+       
             ])
             ->filters([
                 //
@@ -42,6 +50,11 @@ class ListSales extends Component implements HasActions, HasTable
                     ->color('danger')
                     ->action(fn (Sales $record) => $record->delete())
                     ->successNotificationTitle('Sale Deleted Successfully'),
+
+                Action::make('edit')
+                // redirect to this url
+                    ->url(fn (Sales $record): string => route('sales.update', $record))
+                
             
             ])
             ->toolbarActions([

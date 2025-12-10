@@ -12,7 +12,7 @@ use Livewire\Volt\Volt;
 use App\Livewire\Items\EditItem;
 use App\Livewire\Customer\EditCustomers;
 use App\Livewire\Items\EditInventory;
-use App\Livewire\Sale\EditSale;
+use App\Livewire\Sales\EditSale;
 use App\Livewire\Management\EditPaymentMethod;
 use App\Livewire\Management\EditUser;
 
